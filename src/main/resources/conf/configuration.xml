@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="sys.properties">
+		<!-- <property name="jdbc.password" value="root"/> -->
+	</properties>
+	<typeAliases>
+		<!--给实体类起一个别名 user -->
+		<typeAlias type="me.leckie.jda.moudle.User" alias="User" />
+	</typeAliases>
+	<!--数据源配置 这块用 MySql数据库 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="jdbc" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<!--userMapper.xml装载进来 同等于把“dao”的实现装载进来 -->
+		<mapper resource="conf/userDaoImpl.xml" />
+	</mappers>
+</configuration> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这块等于dao接口的实现 namespace必须和接口的类路径一样 -->
+<mapper namespace="me.leckie.jda.dao.UserDao">
+	<!-- get必须和接口中的方法名一样 返回一个User 就是刚才的别名 如果不弄别名要连类路径一起写 麻烦 -->
+	<sql id="columns">id, username, password</sql>
+	<select id="get" parameterType="HashMap" resultType="User">
+		SELECT
+		<include refid="columns" />
+		FROM user WHERE id=#{id}
+	</select>
+	<select id="getUser" parameterType="HashMap" resultType="User">
+		SELECT
+		<include refid="columns" />
+		FROM user WHERE id=#{id}
+	</select>
+	<insert id="save" parameterType="User" flushCache="true"
+		statementType="PREPARED" useGeneratedKeys="true" keyProperty="id"
+		timeout="20">
+		INSERT INTO user(id, username, password) VALUES(#{id},
+		#{username}, #{password})
+	</insert>
+	<update id="update" parameterType="User">
+		UPDATE user
+		<set>
+			<if test="id != null">id=#{id},</if>
+			<if test="username != null">username=#{username},</if>
+			<if test="password != null">password=#{password},</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	<delete id="delete">
+		DELETE FROM user WHERE id=#{id}
+	</delete>
+	<select id="list" resultType="User">
+		SELECT * FROM user
+	</select>
+</mapper>  
