@@ -176,7 +176,6 @@ public class ConnectionPool {
 						conn = newConnection();
 					} catch ( Exception e ) {
 						logger.debug("创建连接失败...");
-						throw e;
 					}
 					wrapper.setConnection(conn);
 				}

@@ -1,6 +1,11 @@
 package me.leckie.jda.moudle;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 6672747371885386511L;
+	
 	private long id;
 	private String username;
 	private String password;
