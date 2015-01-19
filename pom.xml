@@ -34,6 +34,12 @@
 			<artifactId> mysql-connector-java</artifactId>
 			<version>5.0.5</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
